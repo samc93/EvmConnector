@@ -1,0 +1,71 @@
+{
+  "$id": "FirModel.json",
+  "type": "object",
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "FIR_NO": {
+      "$id": "/properties/FIR_NO",
+      "type": "string",
+      "title": "FIR number",
+      "default": "",
+      "examples": [
+        "9999999999"
+      ],
+      "minLength": 10,
+      "maxLength": 10,
+      "description": "First incident report number"
+    },
+    "FIR_DATE": {
+      "$id": "/properties/FIR_DATE",
+      "type": "string",
+      "title": "FIR date",
+      "default": "",
+      "examples": [
+        "12-04-1993"
+      ],
+      "description": "Incident reporting date in dd-mm-yyyy format"
+    },
+    "FIR_TITLE": {
+      "$id": "/properties/FIR_TITLE",
+      "type": "string",
+      "title": "FIR title",
+      "default": "",
+      "examples": [
+        "Car accident"
+      ],
+      "minLength": 5,
+      "maxLength": 50,
+      "description": "Short description of incident"
+    },
+    "SSN": {
+      "$id": "/properties/SSN",
+      "type": "string",
+      "title": "SSN",
+      "default": "",
+      "examples": [
+        "123456789"
+      ],
+      "minLength": 9,
+      "maxLength": 9,
+      "description": "Socail security number of the person associated with the registered incident"
+    },
+    "FILE_HASH_LOCATION": {
+      "$id": "/properties/FILE_HASH_LOCATION",
+      "type": "string",
+      "title": "FILE location",
+      "default": "",
+      "examples": [
+        "QmaCpDMGvV2BGHeYERUEnRQAwe3N8SzbUtfsmvsqQLuvuJ"
+      ],
+      "description": "IPFS hash location of the FIR document"
+    }
+  },
+  "required": [
+    "FIR_NO",
+    "FIR_DATE",
+    "FIR_TITLE",
+    "SSN",
+    "FILE_HASH_LOCATION"
+  ]
+}
