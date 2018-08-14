@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const validator = require('../validator')
+const validator = require('../validator');
+var connector = require('../connector');
 const router = express.Router();
 
 //setting up the router to use json body parser.
@@ -19,11 +20,18 @@ router.post('/saveFirInfo', (req, res, next) => {
     };
 
     //Validate the FIR schema.
-    var result = validator.validateFirSchema(req.body, (err, result) => {
+    validator.validateFirSchema(req.body, (err, result) => {
         if (err.length > 0) {
             res.status(403).send(err);
         } else {
-            res.send(req.body);
+            //Invoke contract method
+            connector.saveFirData(req.body, (message, status) => {
+                res.status(status).send(message);
+            });/*{
+                res.status(201).send('FIR Information sent to the Block Chain');
+            } else{
+            res.status(500).send('Error occured while saving data to BlockChain');
+            }*/
         }
     });
 
