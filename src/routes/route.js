@@ -12,7 +12,7 @@ router.get('/', (req, res, next) => {
     res.send('Welcome to the ethereum Interactive Interface API');
 });
 
-//Method to save FIR info to the     block chain
+//Method to save FIR info to the  block chain
 router.post('/saveFirInfo', (req, res, next) => {
     //Check the incoming data type.Reject if anything but json
     if (req.headers["content-type"] !== 'application/json') {
@@ -24,17 +24,20 @@ router.post('/saveFirInfo', (req, res, next) => {
         if (err.length > 0) {
             res.status(403).send(err);
         } else {
-            //Invoke contract method
+            //Invoke contract method to save FIR
             connector.saveFirData(req.body, (message, status) => {
                 res.status(status).send(message);
-            });/*{
-                res.status(201).send('FIR Information sent to the Block Chain');
-            } else{
-            res.status(500).send('Error occured while saving data to BlockChain');
-            }*/
+            });
         }
     });
 
+});
+
+//Method to get FIR data based on FIR ID
+router.get('/getFirInfo/:id', (req, res,next) => {
+    connector.getFirData(req.params.id, (message, status) => {
+        res.status(status).send(message);
+     });
 });
 
 

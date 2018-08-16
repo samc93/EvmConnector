@@ -19,12 +19,13 @@
     "FIR_DATE": {
       "$id": "/properties/FIR_DATE",
       "type": "string",
+      "format":"date",
       "title": "FIR date",
       "default": "",
       "examples": [
-        "12-04-1993"
+        "1993-04-12"
       ],
-      "description": "Incident reporting date in dd-mm-yyyy format"
+      "description": "Incident reporting date in yyyy-mm-dd format"
     },
     "FIR_TITLE": {
       "$id": "/properties/FIR_TITLE",

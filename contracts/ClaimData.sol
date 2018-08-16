@@ -8,6 +8,9 @@ contract ClaimData {
     constructor() public {
         owner = msg.sender;
     } 
+
+    //Event to signify FIR has been added.
+    event FirEvent(string firNo);
     
     //Structure to store FIR Details
     struct FirData{
@@ -31,6 +34,8 @@ contract ClaimData {
         });
         
         FirInfo[_firNo] = userFirData;
+
+        FirEvent(_firNo); 
         
     }
     

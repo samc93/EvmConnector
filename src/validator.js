@@ -14,7 +14,7 @@ module.exports = {
         var results = v.validate(instance, firSchema);
         if (results.errors.length > 0) {
             results.errors.forEach(element => {
-                messages.push(element.message);
+                messages.push(element.stack);
             });
 
         }
